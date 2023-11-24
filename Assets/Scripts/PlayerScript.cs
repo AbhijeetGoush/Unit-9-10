@@ -36,5 +36,9 @@ public class PlayerScript : MonoBehaviour
         {
             Instantiate(bulletPrefab, bulletShooter.transform.position, Quaternion.identity);
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Instantiate(bulletPrefab, bulletShooter.transform.position, Quaternion.identity);
+        }
     }
 }
