@@ -5,7 +5,7 @@ using UnityEngine;
 public class Joystick : MonoBehaviour
 {
     public Transform player;
-    public float speed = 5.0f;
+    public float speed = 7.0f;
     private bool touchStart = false;
     private Vector2 pointA;
     private Vector2 pointB;
@@ -21,7 +21,7 @@ public class Joystick : MonoBehaviour
             pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
 
             circle.transform.position = pointA;
-            outerCircle.transform.position = pointA;
+            outerCircle.transform.position = new Vector2(-8, -3);
             circle.GetComponent<SpriteRenderer>().enabled = true;
             outerCircle.GetComponent<SpriteRenderer>().enabled = true;
         }
@@ -44,7 +44,8 @@ public class Joystick : MonoBehaviour
             Vector2 direction = Vector2.ClampMagnitude(offset, 1.0f);
             moveCharacter(direction);
 
-            circle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y);
+            circle.transform.position = new Vector2 (outerCircle.transform.position.x + direction.x, outerCircle.transform.position.y + direction.y);
+
         }
         else
         {

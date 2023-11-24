@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public GameObject bulletPrefab;
+    public Transform bulletShooter;
     Transform playerTrans;
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,10 @@ public class PlayerScript : MonoBehaviour
         if (playerTrans.position.y <= -6.4f)
         {
             playerTrans.transform.position = new Vector2(playerTrans.position.x, 6);
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Instantiate(bulletPrefab, bulletShooter.transform.position, Quaternion.identity);
         }
     }
 }
