@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Notifications.iOS;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
