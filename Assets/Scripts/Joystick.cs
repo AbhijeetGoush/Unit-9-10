@@ -16,26 +16,44 @@ public class Joystick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+        float leftSideThreshold = Screen.width * 0.5f;
 
-            
-            outerCircle.transform.position = new Vector2(-8, -3);
-            circle.GetComponent<SpriteRenderer>().enabled = true;
-            outerCircle.GetComponent<SpriteRenderer>().enabled = true;
-        }
-        if (Input.GetMouseButton(0))
+        for (int i = 0; i < Input.touchCount; i++)
         {
-            touchStart = true;
-            pointB = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
-        }
-        else
-        {
-            touchStart = false;
-        }
+            Touch touch = Input.GetTouch(0);
 
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (touch.position.x < leftSideThreshold)
+                {
+                    pointA = new Vector3(-8, -3, Camera.main.transform.position.z);
+
+                    outerCircle.transform.position = new Vector2(-8, -3);
+                    circle.GetComponent<SpriteRenderer>().enabled = true;
+                    outerCircle.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                else
+                {
+                    touchStart = false;
+                }
+            }
+
+            if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+            {
+                if(touch.position.x < leftSideThreshold)
+                {
+                    touchStart = true;
+                    pointB = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.transform.position.z));
+
+                }
+            }
+            else
+            {
+                touchStart = false;
+            }
+        }
     }
+
     private void FixedUpdate()
     {
         if (touchStart)
