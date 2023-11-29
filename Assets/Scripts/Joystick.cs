@@ -44,7 +44,8 @@ public class Joystick : MonoBehaviour
                 {
                     touchStart = true;
                     pointB = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.transform.position.z));
-
+                    circle.GetComponent<SpriteRenderer>().enabled = true;
+                    outerCircle.GetComponent<SpriteRenderer>().enabled = true;
                 }
             }
             else

@@ -22,7 +22,7 @@ public class Fireball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fireballRb.AddForce(-transform.up * 17);
+        fireballRb.AddForce(-transform.up * 10 * 2);
         if (fireballTrans.position.x >= 10.788f)
         {
             Destroy(this.gameObject);
