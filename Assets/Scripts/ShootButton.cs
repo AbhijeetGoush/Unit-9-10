@@ -7,6 +7,7 @@ public class ShootButton : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform bulletShooter;
+    Ray ray;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class ShootButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         for (int i = 0; i < Input.touchCount; i++)
         {
             Touch touch = Input.GetTouch(i);
@@ -34,7 +36,7 @@ public class ShootButton : MonoBehaviour
             }
         }
 
-        /*if(Input.GetMouseButtonDown(0))
+        /* if(Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
