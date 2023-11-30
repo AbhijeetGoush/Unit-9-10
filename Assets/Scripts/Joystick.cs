@@ -12,12 +12,12 @@ public class Joystick : MonoBehaviour
     public Vector2 directionV;
     public Transform circle;
     public Transform outerCircle;
-
+    public GameObject playerFlame;
     // Update is called once per frame
     void Update()
     {
         float leftSideThreshold = Screen.width * 0.5f;
-
+        
         for (int i = 0; i < Input.touchCount; i++)
         {
             Touch touch = Input.GetTouch(0);
@@ -31,6 +31,7 @@ public class Joystick : MonoBehaviour
                     outerCircle.transform.position = new Vector2(-8, -3);
                     circle.GetComponent<SpriteRenderer>().enabled = true;
                     outerCircle.GetComponent<SpriteRenderer>().enabled = true;
+                    playerFlame.GetComponent<SpriteRenderer>().enabled = true;
                 }
                 else
                 {
@@ -70,6 +71,7 @@ public class Joystick : MonoBehaviour
         {
             circle.GetComponent<SpriteRenderer>().enabled = false;
             outerCircle.GetComponent<SpriteRenderer>().enabled = false;
+            playerFlame.GetComponent<SpriteRenderer>().enabled = false;
         }
 
     }

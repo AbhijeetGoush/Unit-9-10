@@ -40,4 +40,14 @@ public class Fireball : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Asteroid")
+        {
+            var asteroid = collision.GetComponent<AsteroidScript>();
+            asteroid.DestroyAsteroid();
+            Destroy(this.gameObject);
+            print("Hit");
+        }
+    }
 }

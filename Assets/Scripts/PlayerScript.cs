@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform bulletShooter;
+    public int Health = 3;
     Transform playerTrans;
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,14 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Instantiate(bulletPrefab, bulletShooter.transform.position, Quaternion.identity);
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Asteroid")
+        {
+            Destroy(collision.gameObject);
+            Health -= 1;
         }
     }
 }
