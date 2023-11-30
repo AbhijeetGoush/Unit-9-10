@@ -47,7 +47,6 @@ public class Fireball : MonoBehaviour
             var asteroid = collision.GetComponent<AsteroidScript>();
             asteroid.DestroyAsteroid();
             Destroy(this.gameObject);
-            print("Hit");
         }
     }
 }
